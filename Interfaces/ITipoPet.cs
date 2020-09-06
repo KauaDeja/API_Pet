@@ -19,7 +19,7 @@ namespace API_Pet.Interfaces
         TipoPet Alterar(int id, TipoPet t);
 
         //DELETE
-        TipoPet Excluir(int id);
+        void Excluir(int id);
 
         TipoPet BuscarPorId(int id);
 

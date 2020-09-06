@@ -86,9 +86,21 @@ namespace API_Pet.Repositories
             return t;
         }
 
-        public TipoPet Excluir(int id)
-        {
-            throw new NotImplementedException();
+        public void Excluir(int id)
+        {   
+            // Abrir conexao
+            cmd.Connection = conexao.Conectar();
+
+            //Casar os seguintes id
+            cmd.CommandText = "DELETE FROM TipoPet WHERE IdTipoPet = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            // Será este comando o responsável por injetar os dados no banco efetivamente
+            cmd.ExecuteNonQuery();
+
+            //Desconectando
+            conexao.Desconectar();
+
         }
 
         public List<TipoPet> LerTodos()
