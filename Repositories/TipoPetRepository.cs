@@ -19,7 +19,22 @@ namespace API_Pet.Repositories
 
         public TipoPet Alterar(int id, TipoPet t)
         {
-            throw new NotImplementedException();
+            // Inicia conexao com a database
+            cmd.Connection = conexao.Conectar();
+
+            //Usamos o comando do sql para 
+            cmd.CommandText = "UPDATE TipoPet SET Descricao= @descricao WHERE IdTipoPet = @id";
+
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@descricao", t.Descricao);
+
+            //DML --> ExecuteNonQuery
+            // Será este comando o responsável por injetar os dados no banco efetivamente
+            cmd.ExecuteNonQuery();
+
+            conexao.Desconectar();
+
+            return t;
         }
 
         public TipoPet BuscarPorId(int id)

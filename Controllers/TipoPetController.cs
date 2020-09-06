@@ -40,8 +40,9 @@ namespace API_Pet.Controllers
 
         // PUT api/<TipoPetController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public TipoPet Put(int id, [FromBody]TipoPet t)
         {
+            return rep.Alterar(id, t);
         }
 
         // DELETE api/<TipoPetController>/5
