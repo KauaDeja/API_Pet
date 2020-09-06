@@ -53,7 +53,22 @@ namespace API_Pet.Repositories
 
         public TipoPet Cadastrar(TipoPet t)
         {
-            throw new NotImplementedException();
+            // abri conexao
+            cmd.Connection = conexao.Conectar();
+
+            //Aqui nos usamos o comando do sql que vai inserir dados na tabela tipo pet
+            cmd.CommandText = "INSERT INTO TipoPet (Descricao)" + "Values" + "(@descricao)";
+
+            cmd.Parameters.AddWithValue("@descricao", t.Descricao);
+
+            //DML --> ExecuteNonQuery
+            // Será este comando o responsável por injetar os dados no banco efetivamente
+            cmd.ExecuteNonQuery();
+
+
+            conexao.Desconectar();
+
+            return t;
         }
 
         public TipoPet Excluir(int id)

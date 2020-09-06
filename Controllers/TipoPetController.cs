@@ -33,8 +33,9 @@ namespace API_Pet.Controllers
 
         // POST api/<TipoPetController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] TipoPet t)
         {
+            rep.Cadastrar(t);
         }
 
         // PUT api/<TipoPetController>/5
