@@ -24,7 +24,31 @@ namespace API_Pet.Repositories
 
         public TipoPet BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            cmd.Connection = conexao.Conectar();
+
+            // Usamos o comando de Busca do SQL(WHERE)
+            cmd.CommandText = "SELECT * FROM TipoPet WHERE IdTipoPet = @id";
+
+            //Atribuimos as variaves que vem como arg, ou seja, é um tipo de pareamento 
+            cmd.Parameters.AddWithValue("@id", id);
+
+            //Damos o play
+            SqlDataReader dados = cmd.ExecuteReader();
+
+            
+            TipoPet t = new TipoPet();
+
+            while (dados.Read())
+            {
+                t.IdTipoPet = Convert.ToInt32(dados.GetValue(0));
+                t.Descricao = dados.GetValue(1).ToString();
+            }
+
+
+            // Desconectamos o banco
+            conexao.Desconectar();
+
+            return t;
         }
 
         public TipoPet Cadastrar(TipoPet t)

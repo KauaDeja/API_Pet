@@ -26,9 +26,9 @@ namespace API_Pet.Controllers
 
         // GET api/<TipoPetController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public TipoPet Get(int id)
         {
-            return "value";
+            return rep.BuscarPorId(id);
         }
 
         // POST api/<TipoPetController>

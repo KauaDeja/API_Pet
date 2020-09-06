@@ -13,7 +13,7 @@ namespace API_Pets.Context
         // aqui chamamos o objeto em forma de metodo e conectamos o  sql server
         public PetsContext()
         {
-            con.ConnectionString = @"Data Source=KAUADEJA\SQLEXPRESS;Initial Catalog=boletim;User ID=sa;Password=sa132";
+            con.ConnectionString = @"Data Source=KAUADEJA\SQLEXPRESS;Initial Catalog=Pets;User ID=sa;Password=sa132";
         }
 
         // Aqui nós fazemos a verificação, caso o sistema esteja fechado ele abrirá
