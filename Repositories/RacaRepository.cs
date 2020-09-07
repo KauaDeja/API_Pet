@@ -61,10 +61,10 @@ namespace API_Pet.Repositories
             cmd.Connection = conexao.Conectar();
 
             //Aqui nos usamos o comando do sql que vai inserir dados na tabela tipo pet
-            cmd.CommandText = "INSERT INTO Raca (Descricao, IdTipoPet)" + "Values" + "(@descricao, @idtipopet)";
+            cmd.CommandText = "INSERT INTO Raca (Descricao,IdTipoPet)" + "Values" + "(@descricao, @idtipopet)";
 
             cmd.Parameters.AddWithValue("@descricao", r.Descricao);
-            cmd.Parameters.AddWithValue("@tipopet", r.IdTipoPet);
+            cmd.Parameters.AddWithValue("@idtipopet", r.IdTipoPet);
 
             //DML --> ExecuteNonQuery
             // Será este comando o responsável por injetar os dados no banco efetivamente
