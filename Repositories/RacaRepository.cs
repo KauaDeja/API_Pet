@@ -20,9 +20,25 @@ namespace API_Pet.Repositories
         SqlCommand cmd = new SqlCommand();
 
 
-        public Raca Alterar(int id, Raca t)
+        public Raca Alterar(int id, Raca r)
         {
-            throw new NotImplementedException();
+            // Inicia conexao com a database
+            cmd.Connection = conexao.Conectar();
+
+            //Usamos o comando do sql para 
+            cmd.CommandText = "UPDATE Raca SET Descricao= @descricao, IdTipoPet = @idtipopet WHERE IdRaca = @id";
+
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@descricao", r.Descricao);
+            cmd.Parameters.AddWithValue("@idtipopet", r.IdTipoPet);
+
+            //DML --> ExecuteNonQuery
+            // Será este comando o responsável por injetar os dados no banco efetivamente
+            cmd.ExecuteNonQuery();
+
+            conexao.Desconectar();
+
+            return r;
         }
 
         public Raca BuscarPorId(int id)

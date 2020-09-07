@@ -39,8 +39,9 @@ namespace API_Pet.Controllers
 
         // PUT api/<RacaController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public Raca Put(int id, [FromBody] Raca r)
         {
+            return rep.Alterar(id, r);
         }
 
         // DELETE api/<RacaController>/5
