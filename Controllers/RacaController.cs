@@ -48,6 +48,7 @@ namespace API_Pet.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            rep.Excluir(id);
         }
     }
 }
